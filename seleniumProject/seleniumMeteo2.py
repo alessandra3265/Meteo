@@ -10,8 +10,6 @@ import sys
 driver_path = "C:\\Users\\Alessandra\\Documents\\meteo\\Meteo\\seleniumProject\\geckodriver"
 url = 'https://www.osmer.fvg.it/archivio.php?ln=&p=dati'
 
-ari = 'ARI@Ariis@syn@45.878300@13.090000@13'
-
 optionsFire = Options()
 optionsFire.add_argument('--headless')
 webdriver = webdriver.Firefox(executable_path=driver_path, options=optionsFire)
@@ -20,7 +18,7 @@ webdriver = webdriver.Firefox(executable_path=driver_path, options=optionsFire)
 type specificare 'giorno' per dati giornalieri, 
      specificare 'orari' per dati orari 
 
-esempio esecuzione: py seleniumMeteo2.py giorno
+esempio esecuzione: py seleniumMeteo2.py giorno 2020 6 22
 """
 
 
@@ -56,21 +54,19 @@ def query (type, year, month, day):
         #tipo ricerca: giornaliero o orario
         xpath_giornalieri = '//*[@id="giornalieri"]'
         xpath_orari = '//*[@id="orari"]'        
-        print("type: " + type)
+       
         if (type == 'giorno'):
             xpath_type = xpath_giornalieri
         else:
             xpath_type = xpath_orari        
 
-        #anno
-        print(year)
+        #anno        
         anno_target = 2021 - int(year) #in questo modo 2020->1, 2019->2, 2018->3 ... 
         anno_target_xpath = '/html/body/div[1]/div[1]/div/div/div[2]/form/div/div[1]/div/select[1]/option[' + str(anno_target) + ']'
         
         #mese 
-        mese_target_xpath = '/html/body/div[1]/div[1]/div/div/div[2]/form/div/div[1]/div/select[2]/option[' + month + ']'
-        print(mese_target_xpath)
-
+        mese_target_xpath = '/html/body/div[1]/div[1]/div/div/div[2]/form/div/div[1]/div/select[2]/option[' + str(month) + ']'
+        
         #giorno
         
         """
@@ -108,5 +104,12 @@ def query (type, year, month, day):
    
         
 if __name__ == "__main__":
-    query(sys.argv[1], sys.argv[2], sys.argv[3], 1)
+    print(len(sys.argv))
+    if(len(sys.argv) > 4):
+        query(sys.argv[1], sys.argv[2], sys.argv[3], 1)
+    else:
+        query('giorno', 2020, 6, 22)
+        
+
+
     
