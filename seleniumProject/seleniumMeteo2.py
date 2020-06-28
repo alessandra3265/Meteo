@@ -6,6 +6,15 @@ from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 import time 
 import sys
+from bs4 import BeautifulSoup
+from htmlParsing import htmlParsing
+
+"""
+esecuzione per dati mensili: py seleniumMeteo2.py anno mese             (es: py seleniumMeteo2.py 2020 6)
+esecuzione per dati orari: py seleniumMeteo2.py anno mese giorno        (es: py seleniumMeteo2.py 2020 6 20)
+
+scrive i risultati in un file csv
+"""
 
 driver_path = "C:\\Users\\Alessandra\\Documents\\meteo\\Meteo\\seleniumProject\\geckodriver"
 url = 'https://www.osmer.fvg.it/archivio.php?ln=&p=dati'
@@ -13,14 +22,6 @@ url = 'https://www.osmer.fvg.it/archivio.php?ln=&p=dati'
 optionsFire = Options()
 optionsFire.add_argument('--headless')
 webdriver = webdriver.Firefox(executable_path=driver_path, options=optionsFire)
-
-"""
-type specificare 'giorno' per dati giornalieri, 
-     specificare 'orari' per dati orari 
-
-esempio esecuzione: py seleniumMeteo2.py giorno 2020 6 22
-"""
-
 
 def query (type, year, month, day):
     
@@ -67,20 +68,17 @@ def query (type, year, month, day):
         #mese 
         mese_target_xpath = '/html/body/div[1]/div[1]/div/div/div[2]/form/div/div[1]/div/select[2]/option[' + str(month) + ']'
         
-        #giorno
-        
-        """
-        anno.find_element_by_xpath('/html/body/div[1]/div[1]/div/div/div[2]/form/div/div[1]/div/select[1]/option[1]').click()
-        mese.find_element_by_xpath('/html/body/div[1]/div[1]/div/div/div[2]/form/div/div[1]/div/select[2]/option[6]').click()
-        driver.find_element_by_xpath('/html/body/div[1]/div[1]/div/div/div[2]/form/div/div[2]/div/select/option[2]').click() #stazione
-        tipo.find_element_by_xpath(xpath_type).click()
-        """ 
-        
+        #giorno      
+        giorno_target_xpath = '/html/body/div[1]/div[1]/div/div/div[2]/form/div/div[1]/div/select[3]/option['  + str(day) + ']' 
+
         #fill the form 
         anno.find_element_by_xpath(anno_target_xpath).click()
         mese.find_element_by_xpath(mese_target_xpath).click()
         driver.find_element_by_xpath('/html/body/div[1]/div[1]/div/div/div[2]/form/div/div[2]/div/select/option[2]').click() #stazione
         tipo.find_element_by_xpath(xpath_type).click()
+
+        if (type == 'orari'):
+            giorno.find_element_by_xpath(giorno_target_xpath).click()
 
         #wait 
         time.sleep(5)
@@ -93,22 +91,23 @@ def query (type, year, month, day):
         #wait
         #wait.until(EC.visibility_of_all_elements_located((By.ID, "dati")))
         wait.until(EC.element_to_be_clickable((By.XPATH, '//*[@id="salvaDatiPdf"]')))
-
-        #result page
-        result = driver.find_element_by_id("dati")
-        
-
-        #HTML parsing 
-        print(result.text)
+                
+        #HTML parsing e scrittura su file     
+        html = driver.page_source
         driver.close()
+        htmlParsing(html)
+        
    
         
-if __name__ == "__main__":
-    print(len(sys.argv))
-    if(len(sys.argv) > 4):
-        query(sys.argv[1], sys.argv[2], sys.argv[3], 1)
+if __name__ == "__main__":    
+    if(len(sys.argv) == 3):
+        print('hai scelto dati mensili')
+        query('giorno', sys.argv[1], sys.argv[2], 1)
+    elif(len(sys.argv) == 4):
+        print('hai scelto dati orari')
+        query('orari', sys.argv[1], sys.argv[2], sys.argv[3])
     else:
-        query('giorno', 2020, 6, 22)
+        query('giorno', 2020, 6, 1)
         
 
 
