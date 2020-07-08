@@ -2,6 +2,15 @@
 this script allows you to get regional data from http://clima.meteoam.it/RichiestaDatiGenerica.php
 specifying Parameter Region and a time interval 
 
+## dependencies:
+- Selenium
+- BeautifulSoup
+- urllib
+
+##### to install urllib:
+run in comand line:
+`pip install urllib`
+
 ## how to run:
 - run `aereoRegione.py p` to get the list of parameters
 - run `aereoRegione.py parameter region start_day start_month start_year end_day end_month end_year`</br>
