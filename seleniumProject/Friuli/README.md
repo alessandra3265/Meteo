@@ -1,12 +1,8 @@
 ## FiuliAll.py
 FriuliAll.py is a script for the site: https://www.osmer.fvg.it/archivio.php?ln=&p=dati
-
 of the region Friuli Venezia Giulia
-
 to obtain information specifying 'day' 'month' 'year' for daily data or
-
 'month' 'year' for montly data 
-
 of all available meteorological stations 
 
 ## Dependencies:
