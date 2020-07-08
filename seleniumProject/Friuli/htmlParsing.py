@@ -11,6 +11,9 @@ file.close()
 def htmlParsing(html):
     #print(html)
     soup = BeautifulSoup(html, 'html.parser')
+    div = soup.find('div', id = "dati")
+    nome = div.find('b')
+    nome = nome.text
     table = soup.select_one("table")
     #print(table)
     headers = [th for th in table.select("tr")]
@@ -21,7 +24,7 @@ def htmlParsing(html):
     for i in range(len(row)):
         row[i].strip().replace("\n", "")        
         new_row.append(" ".join(row[i].split()))
-      
+    new_row.append(nome)  
     #dati 
     dati = [[td.text for td in row.find_all('td')] for row in table.select("tr")] 
     
