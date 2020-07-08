@@ -1,4 +1,8 @@
-Dependencies
+FriuliAll.py is a script for the site: https://www.osmer.fvg.it/archivio.php?ln=&p=dati
+to obtain information specifying 'day' 'month' 'year' for daily data
+'month' 'year' for montly data of all available meteorological stations 
+
+Dependencies:
 FriuliAll requires selenium library:
 Detailed instructions for Windows users
 
@@ -22,6 +26,7 @@ more information: https://selenium-python.readthedocs.io/installation.html#
 
 
 How to use:
+After installing the dependencies:
 1.  Start a command prompt
 2.  write py friuliAll.py anno mese 
 for example to get monthly data for June 2020 write: py friuliAll.py 2020 6
