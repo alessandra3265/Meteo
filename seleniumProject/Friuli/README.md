@@ -3,23 +3,23 @@ FriuliAll.py is a script for the site: https://www.osmer.fvg.it/archivio.php?ln=
 
 of the region Friuli Venezia Giulia
 
-to obtain information specifying 'day' 'month' 'year' for daily data or
+to obtain information specifying * *day month year* * for daily data or
 
-'month' 'year' for montly data 
+_ _month year_ _ for montly data 
 
 of all available meteorological stations 
 
 ## Dependencies:
-FriuliAll requires selenium library:
+FriuliAll requires ***Selenium*** library:
 Detailed instructions for Windows users
 
 1.  Install Python 3.6 using the MSI available in python.org download page.
 
 2.  Start a command prompt using the cmd.exe program and run the pip command as given below to install selenium.
 
-    C:\Python35\Scripts\pip.exe install selenium
+    `C:\Python35\Scripts\pip.exe install selenium`
 
-Selenium requires a driver to interface with the chosen browser. 
+Selenium requires a ***driver*** to interface with the chosen browser. 
 Firefox, for example, requires geckodriver, which needs to be installed before the script can be run. 
 Make sure it’s in your PATH.
 
