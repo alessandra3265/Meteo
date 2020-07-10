@@ -11,29 +11,15 @@ from parsePerRegioni import finalParsing
 from selenium.webdriver.support.ui import Select
 from selenium.common.exceptions import TimeoutException
 from urllib import request
-
+import os
 
 """
 Versione in cui specifico una regione 
 Dato un parametro trova tutti i sottoparametri e scrive su file
-TODO: memorizza tutte le stazioni di una regione
-      aggiustare il parsing che non supporta più anni 
-
-url = "http://clima.meteoam.it/RichiestaDatiGenerica.php"
-driver_path = "C:\\Users\\Alessandra\\Documents\\meteo\\Meteo\\seleniumProject\\geckodriver"
-optionsFire = Options()
-optionsFire.add_argument('--headless') 
 """
 
-#global webdriver
-#webdriver = webdriver.Firefox(executable_path=driver_path, options=optionsFire)
-
 def aeronatutica(parametro, city, gi, mi, ai, gf, mf, af,html_list):  
-   # url = "http://clima.meteoam.it/RichiestaDatiGenerica.php"
-   # driver_path = "C:\\Users\\Alessandra\\Documents\\meteo\\Meteo\\seleniumProject\\geckodriver"
-   # optionsFire = Options()
-   # optionsFire.add_argument('--headless')
-   # global webdrivers   
+      
     webdrivers = webdriver.Firefox(executable_path=driver_path, options=optionsFire)
     
     with webdrivers as driver:
@@ -56,14 +42,7 @@ def aeronatutica(parametro, city, gi, mi, ai, gf, mf, af,html_list):
         wait.until(EC.element_to_be_clickable((By.XPATH, param_xpath)))
         param = driver.find_element_by_xpath(param_xpath)
         param.click()
-
-        #trovo tutti i parametri (Temperatura, Nuvolosità...) 
-        #select = Select(driver.find_element_by_id('categoria'))
-        #all_option  = select.options
-        #for e in all_option:
-           # print(e.text)
-
-
+        
         #trovo tutti i dettagli parametri 
         select = Select(driver.find_element_by_id('parametri_input_id'))
         all_option  = select.options
@@ -76,8 +55,7 @@ def aeronatutica(parametro, city, gi, mi, ai, gf, mf, af,html_list):
             dettaglio = driver.find_element_by_link_text(dettagli_text[i])
             dettaglio.click() 
         
-        param.click() #chiudo il menu "Dettaglio Parametri"   
-        
+        param.click() #chiudo il menu "Dettaglio Parametri"           
 
         #apro il menu "Stazione: Seleziona una o più stazioni"
         stazione_xpath = '/html/body/div[2]/div/section/div/section[2]/div[2]/form/div[1]/fieldset/div/button/span[1]'
@@ -179,7 +157,8 @@ if __name__ == "__main__":
     
     
     url = "http://clima.meteoam.it/RichiestaDatiGenerica.php"
-    driver_path = "C:\\Users\\Alessandra\\Documents\\meteo\\Meteo\\seleniumProject\\geckodriver"
+    dir_path = os.path.dirname(os.path.realpath(__file__))
+    driver_path = dir_path + "\\geckodriver"
     optionsFire = Options()
     optionsFire.add_argument('--headless')
     html_list = []

@@ -44,9 +44,7 @@ def htmlParse(html, filename):
     row.remove('')
     row.insert(0, 'Parametro')
     row.append('anno')
-    row.append('Stazione')
-
-    print(row)
+    row.append('Stazione')    
     
     #dati delle tabelle
     rows = []

@@ -4775,3 +4775,64 @@ JavaScript warning: http://clima.meteoam.it/JavaScript/jquery-1.10.2.min.js, lin
 JavaScript error: http://clima.meteoam.it/web-clima-sysman/js/mapsv3.js, line 899: TypeError: google.maps.Unload is not a function
 JavaScript warning: http://clima.meteoam.it/JavaScript/jquery-1.10.2.min.js, line 2: Using //@ to indicate sourceMappingURL pragmas is deprecated. Use //# instead
 1594214855574	Marionette	INFO	Stopped listening on port 49267
+1594383701861	mozrunner::runner	INFO	Running command: "C:\\Program Files\\Mozilla Firefox\\firefox.exe" "-marionette" "--headless" "-foreground" "-no-remote" "-profile" "C:\\Users\\ALESSA~1\\AppData\\Local\\Temp\\rust_mozprofileSOKy6M"
+*** You are running in headless mode.
+JavaScript error: resource://gre/modules/XULStore.jsm, line 66: Error: Can't find profile directory.
+1594383704336	Marionette	INFO	Listening on port 53252
+1594383704568	Marionette	WARN	TLS certificate errors will be ignored for this session
+1594383860744	mozrunner::runner	INFO	Running command: "C:\\Program Files\\Mozilla Firefox\\firefox.exe" "-marionette" "--headless" "-foreground" "-no-remote" "-profile" "C:\\Users\\ALESSA~1\\AppData\\Local\\Temp\\rust_mozprofileJLUy1j"
+*** You are running in headless mode.
+JavaScript error: resource://gre/modules/XULStore.jsm, line 66: Error: Can't find profile directory.
+1594383863650	Marionette	INFO	Listening on port 53330
+1594383863903	Marionette	WARN	TLS certificate errors will be ignored for this session
+JavaScript warning: http://clima.meteoam.it/JavaScript/jquery-1.10.2.min.js, line 2: Using //@ to indicate sourceMappingURL pragmas is deprecated. Use //# instead
+JavaScript error: http://clima.meteoam.it/web-clima-sysman/js/mapsv3.js, line 899: TypeError: google.maps.Unload is not a function
+JavaScript warning: http://clima.meteoam.it/JavaScript/jquery-1.10.2.min.js, line 2: Using //@ to indicate sourceMappingURL pragmas is deprecated. Use //# instead
+1594383870316	Marionette	WARN	TimedPromise timed out after 500 ms: stacktrace:
+TimedPromise/<@chrome://marionette/content/sync.js:245:13
+TimedPromise@chrome://marionette/content/sync.js:230:10
+interaction.flushEventLoop@chrome://marionette/content/interaction.js:416:10
+webdriverClickElement@chrome://marionette/content/interaction.js:182:31
+JavaScript error: http://clima.meteoam.it/web-clima-sysman/js/mapsv3.js, line 899: TypeError: google.maps.Unload is not a function
+JavaScript warning: http://clima.meteoam.it/JavaScript/jquery-1.10.2.min.js, line 2: Using //@ to indicate sourceMappingURL pragmas is deprecated. Use //# instead
+1594383878602	Marionette	INFO	Stopped listening on port 53330
+1594387431423	mozrunner::runner	INFO	Running command: "C:\\Program Files\\Mozilla Firefox\\firefox.exe" "-marionette" "--headless" "-foreground" "-no-remote" "-profile" "C:\\Users\\ALESSA~1\\AppData\\Local\\Temp\\rust_mozprofileV8bLBu"
+*** You are running in headless mode.
+JavaScript error: resource://gre/modules/XULStore.jsm, line 66: Error: Can't find profile directory.
+1594387433774	Marionette	INFO	Listening on port 53950
+1594387434102	Marionette	WARN	TLS certificate errors will be ignored for this session
+JavaScript warning: http://clima.meteoam.it/JavaScript/jquery-1.10.2.min.js, line 2: Using //@ to indicate sourceMappingURL pragmas is deprecated. Use //# instead
+JavaScript error: http://clima.meteoam.it/web-clima-sysman/js/mapsv3.js, line 73: TypeError: xml is null
+JavaScript error: http://clima.meteoam.it/web-clima-sysman/js/mapsv3.js, line 899: TypeError: google.maps.Unload is not a function
+JavaScript warning: http://clima.meteoam.it/JavaScript/jquery-1.10.2.min.js, line 2: Using //@ to indicate sourceMappingURL pragmas is deprecated. Use //# instead
+JavaScript error: http://clima.meteoam.it/web-clima-sysman/js/mapsv3.js, line 899: TypeError: google.maps.Unload is not a function
+JavaScript warning: http://clima.meteoam.it/JavaScript/jquery-1.10.2.min.js, line 2: Using //@ to indicate sourceMappingURL pragmas is deprecated. Use //# instead
+1594387449519	Marionette	INFO	Stopped listening on port 53950
+1594387461778	mozrunner::runner	INFO	Running command: "C:\\Program Files\\Mozilla Firefox\\firefox.exe" "-marionette" "--headless" "-foreground" "-no-remote" "-profile" "C:\\Users\\ALESSA~1\\AppData\\Local\\Temp\\rust_mozprofileFAMyB5"
+*** You are running in headless mode.
+JavaScript error: resource://gre/modules/XULStore.jsm, line 66: Error: Can't find profile directory.
+1594387464085	Marionette	INFO	Listening on port 54077
+1594387464435	Marionette	WARN	TLS certificate errors will be ignored for this session
+JavaScript warning: http://clima.meteoam.it/JavaScript/jquery-1.10.2.min.js, line 2: Using //@ to indicate sourceMappingURL pragmas is deprecated. Use //# instead
+JavaScript error: http://clima.meteoam.it/web-clima-sysman/js/mapsv3.js, line 73: TypeError: xml is null
+JavaScript error: http://clima.meteoam.it/web-clima-sysman/js/mapsv3.js, line 899: TypeError: google.maps.Unload is not a function
+JavaScript warning: http://clima.meteoam.it/JavaScript/jquery-1.10.2.min.js, line 2: Using //@ to indicate sourceMappingURL pragmas is deprecated. Use //# instead
+1594387472071	Marionette	WARN	TimedPromise timed out after 500 ms: stacktrace:
+TimedPromise/<@chrome://marionette/content/sync.js:245:13
+TimedPromise@chrome://marionette/content/sync.js:230:10
+interaction.flushEventLoop@chrome://marionette/content/interaction.js:416:10
+webdriverClickElement@chrome://marionette/content/interaction.js:182:31
+JavaScript error: http://clima.meteoam.it/web-clima-sysman/js/mapsv3.js, line 899: TypeError: google.maps.Unload is not a function
+JavaScript warning: http://clima.meteoam.it/JavaScript/jquery-1.10.2.min.js, line 2: Using //@ to indicate sourceMappingURL pragmas is deprecated. Use //# instead
+1594387481819	Marionette	INFO	Stopped listening on port 54077
+1594387494316	mozrunner::runner	INFO	Running command: "C:\\Program Files\\Mozilla Firefox\\firefox.exe" "-marionette" "--headless" "-foreground" "-no-remote" "-profile" "C:\\Users\\ALESSA~1\\AppData\\Local\\Temp\\rust_mozprofileeUSimx"
+*** You are running in headless mode.
+JavaScript error: resource://gre/modules/XULStore.jsm, line 66: Error: Can't find profile directory.
+1594387496575	Marionette	INFO	Listening on port 54221
+1594387496968	Marionette	WARN	TLS certificate errors will be ignored for this session
+JavaScript warning: http://clima.meteoam.it/JavaScript/jquery-1.10.2.min.js, line 2: Using //@ to indicate sourceMappingURL pragmas is deprecated. Use //# instead
+JavaScript error: http://clima.meteoam.it/web-clima-sysman/js/mapsv3.js, line 899: TypeError: google.maps.Unload is not a function
+JavaScript warning: http://clima.meteoam.it/JavaScript/jquery-1.10.2.min.js, line 2: Using //@ to indicate sourceMappingURL pragmas is deprecated. Use //# instead
+JavaScript error: http://clima.meteoam.it/web-clima-sysman/js/mapsv3.js, line 899: TypeError: google.maps.Unload is not a function
+JavaScript warning: http://clima.meteoam.it/JavaScript/jquery-1.10.2.min.js, line 2: Using //@ to indicate sourceMappingURL pragmas is deprecated. Use //# instead
+1594387518091	Marionette	INFO	Stopped listening on port 54221

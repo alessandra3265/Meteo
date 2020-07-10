@@ -9,13 +9,14 @@ import time
 import sys
 from htmlParseAereoMultiData import htmlParse
 from selenium.webdriver.support.ui import Select
+import os
 """
 Script in cui specifico nome di una stazione 
 Dato un parametro trova tutti i sottoparametri e scrive su file csv
 """
 url = "http://clima.meteoam.it/RichiestaDatiGenerica.php"
-driver_path = "C:\\Users\\Alessandra\\Documents\\meteo\\Meteo\\seleniumProject\\geckodriver"
-
+dir_path = os.path.dirname(os.path.realpath(__file__))
+driver_path = dir_path + "\\geckodriver"
 optionsFire = Options()
 optionsFire.add_argument('--headless')
 webdriver = webdriver.Firefox(executable_path=driver_path, options=optionsFire)
@@ -128,7 +129,8 @@ if __name__ == "__main__":
         #se non ci scrivono parametri da riga di comando 
         print('scrivi p per avere elenco parametri disponibili')
         print('specifica Parametro Città giorno mese anno giorno mese anno')
-        #aeronatutica('Precipitazioni','Pescara', '1','1','2008','1','6','2020')
+        aeronatutica('Precipitazioni','Pescara', '1','1','2008','1','6','2020')
+        
     elif(len(sys.argv) == 2 and sys.argv[1] == 'p'):
         getParametri()
 
