@@ -1,15 +1,26 @@
-# aereoRegione.py
-this script allows you to get regional data from http://clima.meteoam.it/RichiestaDatiGenerica.php
-specifying Parameter Region and a time interval 
+# aereoRegione.py and aereoStazione.py
+
 
 ## dependencies:
 - Selenium
 - BeautifulSoup
 - urllib
 
+##### to install Selenium:
+run in comand line:
+`pip install selenium`
+
+##### to install BeautifulSoup:
+run in comand line:
+`pip install beautifulsoup4`
+
 ##### to install urllib:
 run in comand line:
 `pip install urllib`
+
+# aereoRegione.py
+this script allows you to get regional data from http://clima.meteoam.it/RichiestaDatiGenerica.php
+specifying Parameter Region and a time interval 
 
 ## how to run:
 - run `aereoRegione.py p` to get the list of parameters
@@ -28,6 +39,10 @@ this script allows you to get data relating to a city from http://clima.meteoam.
 specifying Parameter City and a time interval 
 </br>
 the list of available cities is on the website</br>
+
+## how to run:
+- run `aereoStazione.py p` to get the list of parameters
+- run `aereoStazione.py parameter station start_day start_month start_year end_day end_month end_year`</br>
 
 ## examples
 `aereoStazione.py Temperatura Pescara 4 5 2015 7 8 2019`
