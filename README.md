@@ -3,7 +3,9 @@
 # Dependencies
 
 ## Install Selenium 
-how to install selenium: https://selenium-python.readthedocs.io/
+1. Start a command prompt
+2. Run `pip install selenium`
+more information: https://selenium-python.readthedocs.io/
 
 ## Install Beautiful Soup 
 1. Start a command prompt
