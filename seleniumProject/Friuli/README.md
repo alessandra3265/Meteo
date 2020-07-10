@@ -2,9 +2,9 @@
 FriuliAll.py is a script for the site: https://www.osmer.fvg.it/archivio.php?ln=&p=dati
 of the region Friuli Venezia Giulia
 
-to obtain information specifying * *day month year* * for daily data or
+to obtain information specifying  *day month year*  for daily data or
 
-_ _month year_ _ for montly data 
+ _month year_  for montly data 
 
 of all available meteorological stations 
 
