@@ -2,7 +2,7 @@
 
 # Prerequisites:
 
-### Install Selenium 
+### Install Selenium: 
 1. Start a command prompt
 2. Run `pip install selenium`
 3. install a ***driver***:
@@ -25,12 +25,19 @@ Safari: 	https://webkit.org/blog/6900/webdriver-support-in-safari-10/
 
 more information: https://selenium-python.readthedocs.io/
 
-### Install Beautiful Soup 
+### Install Beautiful Soup:
 1. Start a command prompt
 2. Run `pip install beautifulsoup4`
 
 more information: https://pypi.org/project/beautifulsoup4/
 
-### Install urllib
+### Install urllib:
 1. Start a command prompt
 2. Run `pip install urllib`
+
+### Install robobrowser:
+1. Start a command prompt
+2. Run `pip install robobrowser`
+
+robobrower's documentation: http://robobrowser.readthedocs.org/
+
