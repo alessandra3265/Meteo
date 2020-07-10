@@ -29,14 +29,6 @@ Safari: 	https://webkit.org/blog/6900/webdriver-support-in-safari-10/
 5. extract the directory 
 6. copy and paste the *driver_name.exe* in the same directory of the script.
 
-For example, if you use **Chrome**:</br>
-
-- copy the chormedriver.exe file in the project directory: aeronautica/**chrome_version**
-
-if you use **Mozilla Firefox**:
-- copy the geckodriver.exe file in the project directory: aeronautica/**firefox_version**
-
-
 more information: https://selenium-python.readthedocs.io/
 
 ### Install Beautiful Soup:
