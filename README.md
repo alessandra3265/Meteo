@@ -5,7 +5,7 @@
 ### Install Selenium 
 1. Start a command prompt
 2. Run `pip install selenium`
-3. install a ***driver***
+3. install a ***driver***:
 Selenium requires a ***driver*** to interface with the chosen browser. 
 Firefox, for example, requires geckodriver, which needs to be installed before the script can be run. 
 Make sure it’s in your ***PATH***.
