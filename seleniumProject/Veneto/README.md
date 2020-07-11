@@ -8,7 +8,7 @@ Scripts for the website: https://www.arpa.veneto.it/bollettini/storico/Mappa_202
 
 see: https://github.com/alessandra3265/Meteo#prerequisites.
 
-# aereoProvince.py
+# venetoProvince.py
 this script allows you to get data of the provinces of Veneto
 specifying Year Parameter Province of interest
 
