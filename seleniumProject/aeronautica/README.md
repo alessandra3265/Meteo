@@ -17,14 +17,14 @@ Firefox: 	https://github.com/mozilla/geckodriver/releases </br>
 Safari: 	https://webkit.org/blog/6900/webdriver-support-in-safari-10/ </br>
 
 - extract the directory 
-- copy and paste the *driver_name.exe* in the same directory of the script.
+- copy and paste the *driver_name.exe* in the directory ***SeleniumProject***.
 
 For example, if you use **Chrome**:</br>
 
-- copy the chormedriver.exe file in the project directory: aeronautica/**chrome_version**
+- copy the chormedriver.exe file in the directory ***SeleniumProject***.
 
 if you use **Mozilla Firefox**:
-- copy the geckodriver.exe file in the project directory: aeronautica/**firefox_version**
+- copy the geckodriver.exe file in the directory ***SeleniumProject***.
 
 ### to install BeautifulSoup:
 run in comand line:
