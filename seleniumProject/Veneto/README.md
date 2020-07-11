@@ -33,11 +33,11 @@ this script allows you to get data relating to a city
 - you can also run `venetoStazione.py s anno parametro` to get the list of available stations for that particular year for that parameter
 - you can also run `venetoStazione.py p` to get the list of all parameters
 
-### examples 1
+### examples 1:
 
-`venetoStazione.py 2017 VENTO Conegliano` to obtain Conigliano's data.
+`venetoStazione.py 2017 VENTO Conegliano` to obtain Conegliano's wind data for 2017.
 
-### examples 2
+### examples 2:
 
 `venetoStazione.py 2019 RADSOL s`
 
