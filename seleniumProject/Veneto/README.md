@@ -1,5 +1,5 @@
 # venetoProvince.py and venetoStazione.py
-Scripts for the website: .
+Scripts for the website: https://www.arpa.veneto.it/bollettini/storico/Mappa_2020_TEMP.htm.
 
 ## dependencies:
 - Selenium
@@ -33,8 +33,11 @@ this script allows you to get data relating to a city
 - you can also run `venetoStazione.py s anno parametro` to get the list of available stations for that particular year for that parameter
 - you can also run `venetoStazione.py p` to get the list of all parameters
 
-## examples
+### examples 1
+
 `venetoStazione.py 2017 VENTO Conegliano` to obtain Conigliano's data.
+
+### examples 2
 
 `venetoStazione.py 2019 RADSOL s`
 
