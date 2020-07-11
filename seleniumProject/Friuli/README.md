@@ -6,12 +6,13 @@ to obtain information specifying  *day month year*  for daily data or
 
  _month year_  for montly data 
 
-of all available meteorological stations 
+of all available meteorological stations.
 
 ## Dependencies:
 - selenium
 - BeautifulSoup
-see: https://github.com/alessandra3265/Meteo
+
+see: https://github.com/alessandra3265/Meteo#prerequisites.
 
 ## How to run:
 After installing the dependencies:
