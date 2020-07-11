@@ -1,33 +1,29 @@
 from selenium import webdriver
-from selenium.webdriver.firefox.options import Options
+from selenium.webdriver.chrome.options import Options
 from selenium.webdriver.common.by import By
 from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 import time 
 import sys
+import os
+from pathlib import Path
 from bs4 import BeautifulSoup
-from htmlParsing import htmlParsing
+from parseFriuliAll import final_parsing
 
 """
-script per il friuli 
-esecuzione per dati mensili: py seleniumMeteo2.py anno mese             (es: py seleniumMeteo2.py 2020 6)
-esecuzione per dati orari: py seleniumMeteo2.py anno mese giorno        (es: py seleniumMeteo2.py 2020 6 20)
+script per il Friuli 
+esecuzione per dati mensili: py friuliAll.py anno mese               (es: py friuliAll.py 2020 6)
+esecuzione per dati orari:   py friuliAll.py anno mese giorno        (es: py friliAll.py 2020 6 20)
 
-scrive i risultati in un file csv hmtlSel.csv
+scrive i risultati in un file csv nella directory corrente 
 """
 
-driver_path = "C:\\Users\\Alessandra\\Documents\\meteo\\Meteo\\seleniumProject\\geckodriver"
-url = 'https://www.osmer.fvg.it/archivio.php?ln=&p=dati'
-
-optionsFire = Options()
-optionsFire.add_argument('--headless')
-webdriver = webdriver.Firefox(executable_path=driver_path, options=optionsFire)
-
-def query (type, year, month, s, day):
-    
-    with webdriver as driver:
-
+def query (type, year, month, day,city):
+    global webdrivers
+    webdrivers = webdriver.Chrome(executable_path=driver_path, options=optionsFire)
+    with webdrivers as driver:
+        
         wait = WebDriverWait(driver, 20)        
 
         # retrive url in headless browser
@@ -75,7 +71,19 @@ def query (type, year, month, s, day):
         #fill the form 
         anno.find_element_by_xpath(anno_target_xpath).click()
         mese.find_element_by_xpath(mese_target_xpath).click()
-        driver.find_element_by_xpath('/html/body/div[1]/div[1]/div/div/div[2]/form/div/div[2]/div/select/option['+str(s)+']').click() #stazione
+        
+        #stazione
+        #apro il menu
+        wait.until(EC.element_to_be_clickable((By.XPATH, '//*[@id="stazione"]')))
+        driver.find_element_by_xpath('//*[@id="stazione"]').click()
+        #seleziono una stazione
+        
+        stazionexpath = '/html/body/div[1]/div[1]/div/div/div[2]/form/div/div[2]/div/select/option['+str(city)+']'
+        wait.until(EC.element_to_be_clickable((By.XPATH, stazionexpath)))
+        driver.find_element_by_xpath(stazionexpath).click() #stazione
+        #si chiude da solo
+        #aspetto
+        wait.until(EC.element_to_be_clickable((By.XPATH, xpath_type)))
         tipo.find_element_by_xpath(xpath_type).click()
 
         #clicco sul giorno scelto 
@@ -97,19 +105,41 @@ def query (type, year, month, s, day):
         #HTML parsing e scrittura su file     
         html = driver.page_source
         driver.quit()
-        htmlParsing(html)
+        return html
         
    
         
-if __name__ == "__main__":    
-    if(len(sys.argv) == 4):
-        print('hai scelto dati mensili')
-        query('giorno', sys.argv[1], sys.argv[2],sys.argv[3], 1)
-    elif(len(sys.argv) == 4):
-        print('hai scelto dati orari')
-        query('orari', sys.argv[1], sys.argv[2], sys.argv[3],sys.argv[4])
-    else:
-        query('giorno', 2020, 6,2, 1)
+if __name__ == "__main__": 
+    htmlList = []   
+    p = Path(os.path.realpath(__file__))
+    parent = p.parent.parent.parent
+    driver_path = os.path.join(parent,"chromedriver")
+    url = 'https://www.osmer.fvg.it/archivio.php?ln=&p=dati'
+    optionsFire = Options()
+    optionsFire.add_argument('--headless')
+    if (len(sys.argv) == 3):
+        anno = sys.argv[1]
+        mese = sys.argv[2]   
+        print (anno)
+        print (mese)     
+        for city in range(2,54):
+            html = query('giorno', anno, mese, '',city)
+            htmlList.append(html)
+
+    elif (len(sys.argv) == 4): 
+        anno = sys.argv[1]
+        mese = sys.argv[2]  
+        giorno = sys.argv[3]
+
+        for city in range(2,7):
+            html = query('giorno', anno, mese, giorno,city)
+            htmlList.append(html)
+    elif (len(sys.argv) == 1):        
+        print('giorno 2020 6 1 ariis')
+        html = query('giorno', 2020, 6,1,2)
+        htmlList.append(html)
+    
+    final_parsing(htmlList,2020)
         
 
 

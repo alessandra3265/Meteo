@@ -10,13 +10,15 @@ import sys
 from htmlParseAereoMultiData import htmlParse
 from selenium.webdriver.support.ui import Select
 import os
+from pathlib import Path
 """
 Script in cui specifico nome di una stazione 
 Dato un parametro trova tutti i sottoparametri e scrive su file csv
 """
 url = "http://clima.meteoam.it/RichiestaDatiGenerica.php"
-dir_path = os.path.dirname(os.path.realpath(__file__))
-driver_path = dir_path + "\\chromedriver"
+p = Path(os.path.realpath(__file__))
+parent = p.parent.parent.parent
+driver_path = os.path.join(parent,"chromedriver")
 optionsFire = Options()
 optionsFire.add_argument('--headless')
 webdriver = webdriver.Chrome(executable_path=driver_path, options=optionsFire)

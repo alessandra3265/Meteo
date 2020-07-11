@@ -11,6 +11,7 @@ from parsePerRegioni import finalParsing
 from selenium.webdriver.support.ui import Select
 from selenium.common.exceptions import TimeoutException
 from urllib import request
+from pathlib import Path
 import os
 
 """

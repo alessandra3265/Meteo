@@ -12,6 +12,7 @@ from selenium.webdriver.support.ui import Select
 from selenium.common.exceptions import TimeoutException
 from urllib import request
 import os
+from pathlib import Path
 
 """
 Versione in cui specifico una regione 
@@ -157,8 +158,9 @@ if __name__ == "__main__":
     
     
     url = "http://clima.meteoam.it/RichiestaDatiGenerica.php"
-    dir_path = os.path.dirname(os.path.realpath(__file__))
-    driver_path = dir_path + "\\chromedriver"
+    p = Path(os.path.realpath(__file__))
+    parent = p.parent.parent.parent
+    driver_path = os.path.join(parent,"chromedriver")
     optionsFire = Options()
     optionsFire.add_argument('--headless')
     html_list = []

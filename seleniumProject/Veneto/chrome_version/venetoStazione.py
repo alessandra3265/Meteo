@@ -1,5 +1,5 @@
 from selenium import webdriver
-from selenium.webdriver.firefox.options import Options
+from selenium.webdriver.chrome.options import Options
 from selenium.webdriver.common.by import By
 from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.support.ui import WebDriverWait
@@ -8,6 +8,8 @@ from bs4 import BeautifulSoup
 from requests_html import HTMLSession
 from parsingVeneto import final_parsing
 import sys
+import os
+from pathlib import Path
 
 """
 script per l'interrogazione relativa a una singola stazione, in un anno, per un dato parametro
@@ -18,11 +20,13 @@ lo script scrive un file NomeStazione.csv con i risultati
 """
 
 url_base = "https://www.arpa.veneto.it/bollettini/storico/"
-driver_path = "C:\\Users\\Alessandra\\Documents\\meteo\\Meteo\\seleniumProject\\geckodriver"
+p = Path(os.path.realpath(__file__))
+parent = p.parent.parent.parent
+driver_path = os.path.join(parent,"chromedriver")
 
 optionsFire = Options()
 optionsFire.add_argument('--headless')
-webdriver = webdriver.Firefox(executable_path=driver_path, options=optionsFire)
+webdriver = webdriver.Chrome(executable_path=driver_path, options=optionsFire)
 
 """ 
 nel html a ogni stazione è associato un numero 
