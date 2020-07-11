@@ -10,11 +10,6 @@ Selenium requires a ***driver*** to interface with the chosen browser.
 
 Firefox, for example, requires geckodriver, which needs to be installed before the script can be run. 
 
-Make sure it’s in your ***PATH***.
-
-Failure to observe this step will give you an error selenium.common.exceptions.WebDriverException: Message: ‘geckodriver’ executable needs to be in PATH.
-
-Other supported browsers will have their own drivers available. 
 Links to some of the more popular browser drivers follow.
 
 Chrome:     https://sites.google.com/a/chromium.org/chromedriver/downloads
@@ -27,9 +22,9 @@ Safari: 	https://webkit.org/blog/6900/webdriver-support-in-safari-10/
 
 4. Download the driver 
 5. extract the directory 
-6. copy and paste the *driver_name.exe* in the same directory of the script.
+6. copy and paste the *driver_name.exe* in the directory ***SeleniumProject***.
 
-more information: https://selenium-python.readthedocs.io/
+selenium documentation: https://selenium-python.readthedocs.io/
 
 ### Install Beautiful Soup:
 1. Start a command prompt
