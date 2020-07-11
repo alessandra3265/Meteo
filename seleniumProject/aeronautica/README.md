@@ -6,7 +6,7 @@ Scripts for the website: http://clima.meteoam.it/RichiestaDatiGenerica.php.
 - BeautifulSoup
 - urllib
 
-see: https://github.com/alessandra3265/Meteo/edit/master/seleniumProject/README.md.
+see: https://github.com/alessandra3265/Meteo/edit/master/README.md.
 
 # aereoRegione.py
 this script allows you to get regional data from http://clima.meteoam.it/RichiestaDatiGenerica.php
