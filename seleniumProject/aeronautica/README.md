@@ -6,15 +6,31 @@
 - BeautifulSoup
 - urllib
 
-##### to install Selenium:
+### to install Selenium:
 run in comand line:
-`pip install selenium`
+- `pip install selenium`
+- download the driver for your browser:
 
-##### to install BeautifulSoup:
+Chrome: 	https://sites.google.com/a/chromium.org/chromedriver/downloads </br>
+Edge: 	https://developer.microsoft.com/en-us/microsoft-edge/tools/webdriver/ </br>
+Firefox: 	https://github.com/mozilla/geckodriver/releases </br>
+Safari: 	https://webkit.org/blog/6900/webdriver-support-in-safari-10/ </br>
+
+- extract the directory 
+- copy and paste the *driver_name.exe* in the same directory of the script.
+
+For example, if you use **Chrome**:</br>
+
+- copy the chormedriver.exe file in the project directory: aeronautica/**chrome_version**
+
+if you use **Mozilla Firefox**:
+- copy the geckodriver.exe file in the project directory: aeronautica/**firefox_version**
+
+### to install BeautifulSoup:
 run in comand line:
 `pip install beautifulsoup4`
 
-##### to install urllib:
+### to install urllib:
 run in comand line:
 `pip install urllib`
 
