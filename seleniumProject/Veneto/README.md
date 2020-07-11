@@ -26,17 +26,19 @@ specifying Year Parameter Province of interest
 
 # venetoStazione.py
 this script allows you to get data relating to a city 
-specifying Parameter City and a time interval 
-</br>
-the list of available cities is on the website</br>
+
 
 ## how to run:
 - run `venetoStazione.py anno parametro stazione` to get results
-- you can also run `venetoStazione.py s anno parametro` to get the list of all stations
+- you can also run `venetoStazione.py s anno parametro` to get the list of available stations for that particular year for that parameter
 - you can also run `venetoStazione.py p` to get the list of all parameters
 
 ## examples
-`venetoStazione.py 2017 VENTO Conegliano`
+`venetoStazione.py 2017 VENTO Conegliano` to obtain Conigliano's data.
+
+`venetoStazione.py 2019 RADSOL s`
+
+to obtain all the stations where solar radiation data are available in the year 2019.
 
 
 
