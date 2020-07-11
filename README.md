@@ -24,6 +24,8 @@ Safari: 	https://webkit.org/blog/6900/webdriver-support-in-safari-10/
 5. extract the directory 
 6. copy and paste the *driver_name.exe* in the directory ***SeleniumProject***.
 
+For example if you use Chrome: paste *chromedriver.exe* in the directory ***SeleniumProject***.
+
 selenium documentation: https://selenium-python.readthedocs.io/
 
 ### Install Beautiful Soup:
