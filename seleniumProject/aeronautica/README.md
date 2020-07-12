@@ -1,38 +1,12 @@
 # aereoRegione.py and aereoStazione.py
-
+Scripts for the website: http://clima.meteoam.it/RichiestaDatiGenerica.php.
 
 ## dependencies:
 - Selenium
 - BeautifulSoup
 - urllib
 
-### to install Selenium:
-run in comand line:
-- `pip install selenium`
-- download the driver for your browser:
-
-Chrome: 	https://sites.google.com/a/chromium.org/chromedriver/downloads </br>
-Edge: 	https://developer.microsoft.com/en-us/microsoft-edge/tools/webdriver/ </br>
-Firefox: 	https://github.com/mozilla/geckodriver/releases </br>
-Safari: 	https://webkit.org/blog/6900/webdriver-support-in-safari-10/ </br>
-
-- extract the directory 
-- copy and paste the *driver_name.exe* in the same directory of the script.
-
-For example, if you use **Chrome**:</br>
-
-- copy the chormedriver.exe file in the project directory: aeronautica/**chrome_version**
-
-if you use **Mozilla Firefox**:
-- copy the geckodriver.exe file in the project directory: aeronautica/**firefox_version**
-
-### to install BeautifulSoup:
-run in comand line:
-`pip install beautifulsoup4`
-
-### to install urllib:
-run in comand line:
-`pip install urllib`
+see: https://github.com/alessandra3265/Meteo#prerequisites.
 
 # aereoRegione.py
 this script allows you to get regional data from http://clima.meteoam.it/RichiestaDatiGenerica.php
