@@ -158,8 +158,9 @@ if __name__ == "__main__":
     
     
     url = "http://clima.meteoam.it/RichiestaDatiGenerica.php"
-    dir_path = os.path.dirname(os.path.realpath(__file__))
-    driver_path = dir_path + "\\geckodriver"
+    p = Path(os.path.realpath(__file__))
+    parent = p.parent.parent.parent
+    driver_path = os.path.join(parent,"geckodriver")
     optionsFire = Options()
     optionsFire.add_argument('--headless')
     html_list = []
