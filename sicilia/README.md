@@ -1,6 +1,6 @@
 # Sicilia
 
-Script script that queries the site: http://meteo.astropa.unipa.it/public/
+Script that queries the site: http://meteo.astropa.unipa.it/public/
 
 ## Requirement:
 * RoboBrowser
