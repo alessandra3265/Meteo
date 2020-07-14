@@ -13,9 +13,11 @@ from pathlib import Path
 
 """
 script per l'interrogazione relativa a una singola stazione, in un anno, per un dato parametro
-eseguire     py venetoStazione.py p     per avere l'elenco dei parametri disponibili
-eseguire     py venetoStazione.py s anno parametro     per avere elenco delle stazioni 
-eseguire     py venetoStazione.py anno parametro stazione per avere i dati relativi 
+
+eseguire     py venetoStazione.py p                         per avere l'elenco dei parametri disponibili
+eseguire     py venetoStazione.py s parametro anno          per avere elenco delle stazioni 
+eseguire     py venetoStazione.py parametro stazione anno   per avere i dati relativi 
+
 lo script scrive un file NomeStazione.csv con i risultati 
 """
 
@@ -26,16 +28,18 @@ driver_path = os.path.join(parent,"geckodriver")
 
 optionsFire = Options()
 optionsFire.add_argument('--headless')
-webdriver = webdriver.Firefox(executable_path=driver_path, options=optionsFire)
+#webdriver = webdriver.Firefox(executable_path=driver_path, options=optionsFire)
 
 """ 
 nel html a ogni stazione è associato un numero 
 costruisce un dizionario che associa il nome di
 ogni stazione con il numero 
 """
-def getDictonaryStation(anno, parametro, city): 
-    url = "https://www.arpa.veneto.it/bollettini/storico/Mappa_2020_" + parametro + ".htm?t=RG"
-    with webdriver as driver:
+def getDictonaryStation(parametro,city, anno): 
+    url = "https://www.arpa.veneto.it/bollettini/storico/Mappa_" + anno + "_" + parametro + ".htm?t=RG"
+    #print(url)
+    wdriver = webdriver.Firefox(executable_path=driver_path, options=optionsFire)
+    with wdriver as driver:
         wait = WebDriverWait(driver, 20)        
 
         # retrive url in headless browser
@@ -47,7 +51,7 @@ def getDictonaryStation(anno, parametro, city):
         
         #result    
         html = driver.page_source
-        driver.close()        
+        driver.quit() #calls driver.dispose and ends the session       
         soup = BeautifulSoup(html, 'html.parser')
         
         tabellaHtml = soup.find('div', id="divTabella")
@@ -71,15 +75,14 @@ def getDictonaryStation(anno, parametro, city):
 """ 
 effettua l'interrogazione sulla pagina web 
 """
-def getStationResult(anno, parametro, city):
-    stazioniDict = getDictonaryStation(anno, parametro, city)
+def getStationResult(parametro, city, anno):
+    stazioniDict = getDictonaryStation(parametro, city,anno)
 
-    #costuisco il link della singola stazione
-    codice = stazioniDict[city]
-        
+    #prendo il codice relativo alla città
+    codice = stazioniDict[city]        
     link = anno + '/' + codice + '_' + anno + '_' + parametro + '.htm'
     link_result = url_base + link
-    print(link_result)
+    #print(link_result)
     #surf to pagina dati
     session = HTMLSession()
     result = session.get(link_result)
@@ -89,7 +92,7 @@ def getStationResult(anno, parametro, city):
     session.close()
     
     #parsing e scrittura su file
-    filename = city + '.csv'
+    filename = city + anno + '.csv'
     final_parsing(html_list, anno,parametro,'', filename)
 
 """  
@@ -102,24 +105,29 @@ def getParametri():
 """
 restituisce le stazioni disponibili in un dato per un dato parametro  
 """
-def getStazioni(anno, parametro):
+def getStazioni(parametro, anno):
     stazioni = getDictonaryStation(anno, parametro,'')
     print(stazioni.keys())
 
 
 if __name__ == "__main__":     
-    if(len(sys.argv) == 4): 
-        if (sys.argv[1] == 's'):
-            getStazioni(sys.argv[2],sys.argv[3])
-        else:
+    if(len(sys.argv) == 4 and sys.argv[1] == 's'):         
+        #param anno s
+        getStazioni(sys.argv[2],sys.argv[3])
+        exit()
+    elif(len(sys.argv) == 4):
+            #param citta anno
             getStationResult(sys.argv[1],sys.argv[2],sys.argv[3])
-    elif(len(sys.argv) == 2):
-        if(sys.argv[1] == 'p'):
-            getParametri()
-        
-    else:
-        # se non si speficano parametri sulla riga di comando 
-        getStationResult('2020','PREC','Padova')
+    elif(len(sys.argv) == 5):
+        #param citta annoInizio annoFine
+        annoInizio = int(sys.argv[3])
+        annoFine = int(sys.argv[4])
+        for anno in range (annoInizio, annoFine + 1):
+            getStationResult(sys.argv[1],sys.argv[2],str(anno))
+    elif(sys.argv[1] == 'p'):
+        getParametri()
+        exit()
+    
 
        
        

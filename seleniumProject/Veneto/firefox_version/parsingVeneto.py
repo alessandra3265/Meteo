@@ -1,6 +1,7 @@
 from bs4 import BeautifulSoup
 from requests_html import HTMLSession
 import csv
+import os 
 """
 script che accetta html relativo a un anno e a una stazione
 """
@@ -62,8 +63,8 @@ def final_parsing(html_list, anno,parametro,provincia, filename):
             print('errore')
             print(e)
         
-    
-    with open(filename, "w") as f:
+    path = os.path.abspath('result')
+    with open (os.path.join(path, filename), "w") as f:
             wr = csv.writer(f)
             wr.writerow(headers)        
             wr.writerows(rows) 

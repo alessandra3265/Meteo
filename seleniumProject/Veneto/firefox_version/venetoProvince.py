@@ -14,8 +14,12 @@ from pathlib import Path
 """
 script per interrogazione aggregata per province
 eseguire    venetoProvince.py p                             per elenco parametri
-eseguire    venetoProvince.py s                             per elenco parametri
-eseguire    venetoProvince.py anno parametro Provincia      per i risultati 
+eseguire    venetoProvince.py s param prov anno             per elenco parametri
+eseguire    venetoProvince.py parametro Provincia anno      per i risultati di un solo anno 
+
+eseguire    venetoProvince.py parametro Provincia anno_inizio anno_fine      
+per i risultati da anno_inzio a anno_fine
+
 """
 
 url_base = "https://www.arpa.veneto.it/bollettini/storico/"
@@ -25,17 +29,18 @@ driver_path = os.path.join(parent,"geckodriver")
 
 optionsFire = Options()
 optionsFire.add_argument('--headless')
-webdriver = webdriver.Firefox(executable_path=driver_path, options=optionsFire)
+#webdriver = webdriver.Firefox(executable_path=driver_path, options=optionsFire)
 
 """
 nel html a ogni stazione è associato un numero 
 resituisce un dizionario che associa il nome della pronvicia con
 la lista di numero della stazione appartententi alle stazioni  
 """
-def getDictProvince(anno, parametro, provincia): 
+def getDictProvince(parametro, provincia, anno):     
     url = "https://www.arpa.veneto.it/bollettini/storico/Mappa_" + anno + "_" +parametro + ".htm?t=RG"
-    #print(url)
-    with webdriver as driver:
+    print(url)
+    wdriver = webdriver.Firefox(executable_path=driver_path, options=optionsFire)
+    with wdriver as driver:
         wait = WebDriverWait(driver, 20)        
 
         # retrive url in headless browser
@@ -93,10 +98,10 @@ def getDictProvince(anno, parametro, provincia):
     return regioniDict
 
 """va sulla pagina web e scrive il file con i risultati"""
-def getProvinciaResult(anno, parametro, provincia):
-    regioniDict = getDictProvince(anno, parametro, provincia)
+def getProvinciaResult(parametro, provincia,anno):
+    regioniDict = getDictProvince(parametro, provincia, anno)
     stazioni_list = []
-    filename = provincia+'.csv'
+    filename = parametro + provincia + anno +'.csv'
     if (provincia == 'tutte'):
         provincia = ""
         valuesList = regioniDict.values()
@@ -125,27 +130,41 @@ def getProvinciaResult(anno, parametro, provincia):
     return
 
 """resituisce elenco delle stazioni"""
-def getStazioni(anno, parametro, provincia):
-    regioniDict = getDictProvince(anno,parametro,provincia)
+def getStazioni(parametro, provincia, anno):
+    regioniDict = getDictProvince(parametro,provincia,anno)
     print(regioniDict[provincia])
 
 """restituisce elenco parametri"""
 def getParametri():
-    parametri = ['TEMP', 'PREC', 'LIVIDRO', 'SUOLO', 'RADSOL', 'UMID','PORTATA','BFOGL','VENTO','PRESS','LIVNEVE']
+    parametri = ['TEMP', 'PREC', 'LIVIDRO', 'SUOLO', 'RADSOL', 'UMID','PORTATA','BFOGL','VVENTO','PRESS','LIVNEVE']
     print(parametri)
 
         
 if __name__ == "__main__": 
     if(len(sys.argv) == 4):
+        #param prov anno 
         getProvinciaResult(sys.argv[1],sys.argv[2],sys.argv[3])
+
     elif(len(sys.argv) == 5 and sys.argv[1] == 's'):
+        #param prov anno s
         getStazioni(sys.argv[2],sys.argv[3],sys.argv[4])
+
     elif(len(sys.argv) == 2 and sys.argv[1] == 'p'):
         getParametri()
     
-    else:
-        getProvinciaResult('2020','PREC','Padova')
-    
+    elif (len(sys.argv) == 5):
+        #param prov anno_inizio anno_fine
+        param = sys.argv[1]
+        prov = sys.argv[2]
+        anno_list = []
+        anno_inizio = int(sys.argv[3])
+        anno_fine = int(sys.argv[4])
+        for i in range (anno_inizio, anno_fine + 1):
+            anno_list.append(str(i))
+        for anno in anno_list:
+            getProvinciaResult(param, prov, anno)
+    else: 
+        print('specifica parametro provincia anno')
 
 
        
