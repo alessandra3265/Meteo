@@ -4,14 +4,14 @@ Script that queries the site: http://meteo.astropa.unipa.it/public/
 
 ## Requirement:
 * RoboBrowser
-* urlib
+* urllib
 
 ## how to run:
 
-first parameter:    medie/estremi (1 per orari, 2 per giornalieri, 3 per mensili)
-second parameter:   Type of time interval (Insert 4 for choose start and end of interval)
-third parameter:    start of time interval in format gg mm aaaa
-fourth parameter:   end of time interval in format gg mm aaaa
+* first parameter:    medie/estremi (1 per orari, 2 per giornalieri, 3 per mensili)
+* second parameter:   Type of time interval (Insert 4 for choose start and end of interval)
+* third parameter:    start of time interval in format gg mm aaaa
+* fourth parameter:   end of time interval in format gg mm aaaa
 
 ## Examples:
 
