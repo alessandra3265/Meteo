@@ -10,9 +10,11 @@ see: https://github.com/alessandra3265/Meteo#prerequisites.
 
 # venetoProvince.py
 this script allows you to get data of the provinces of Veneto
-specifying Year Parameter Province of interest
+specifying Year Parameter Province of interest.
 
-## how to run:
+You can also obtain ***data of all provinces*** specifying *tutte* instead of province.
+
+## how to run: 
 - run `venetoProvince.py anno parametro Provincia` to get results </br> 
 - you can also run `venetoProvince.py p` to get the list of all parameters 
 
@@ -23,6 +25,9 @@ specifying Year Parameter Province of interest
 
 - to obtain temperature data for all stations in the province of Venice </br>
 `venetoProvince.py 2018 TEMP Venezia`
+
+- to obtain all pressure data of the region </br>
+`venetoProvince.py 2018 PRESS tutte`
 
 # venetoStazione.py
 this script allows you to get data relating to a city 
