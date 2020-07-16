@@ -27,6 +27,10 @@ p = Path(os.path.realpath(__file__))
 parent = p.parent.parent.parent
 driver_path = os.path.join(parent,"geckodriver")
 
+path_src = os.path.dirname(os.path.realpath(__file__))
+path_result = os.path.join(path_src, 'result')
+
+
 optionsFire = Options()
 optionsFire.add_argument('--headless')
 #webdriver = webdriver.Firefox(executable_path=driver_path, options=optionsFire)
@@ -102,6 +106,8 @@ def getProvinciaResult(parametro, provincia,anno):
     regioniDict = getDictProvince(parametro, provincia, anno)
     stazioni_list = []
     filename = parametro + provincia + anno +'.csv'
+    filename = os.path.join(path_result, filename)
+    
     if (provincia == 'tutte'):
         provincia = ""
         valuesList = regioniDict.values()
@@ -127,7 +133,7 @@ def getProvinciaResult(parametro, provincia,anno):
         
     #parsing e scrittura su file    
     final_parsing(html_list, anno,parametro,provincia, filename)
-    return
+    
 
 """resituisce elenco delle stazioni"""
 def getStazioni(parametro, provincia, anno):
@@ -165,6 +171,7 @@ if __name__ == "__main__":
             getProvinciaResult(param, prov, anno)
     else: 
         print('specifica parametro provincia anno')
+        #getProvinciaResult('TEMP', 'Padova', '2018')
 
 
        
