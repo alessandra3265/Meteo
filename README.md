@@ -1,6 +1,9 @@
 # Meteo
 
 # Prerequisites:
+### Python:
+1. Download Python version >= 3.8 from:  https://www.python.org/downloads/
+2. Add python to PATH
 
 ### Install Selenium: 
 1. Start a command prompt
