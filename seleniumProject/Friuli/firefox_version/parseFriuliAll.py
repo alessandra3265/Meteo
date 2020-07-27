@@ -47,7 +47,7 @@ def write_dati(html,anno):
     return dati
 
 
-def final_parsing(html_list,anno):
+def final_parsing(html_list,anno,filename):
     if (len(html_list) == 0):
         print('nessun risultato')
         return
@@ -56,8 +56,8 @@ def final_parsing(html_list,anno):
     for e in html_list:
         dati = dati + write_dati(e,anno)        
     
-    #scrittura su file
-    with open("friuliAll.csv", "w") as f:
+    #scrittura su file   
+    with open(filename, "w") as f:
         wr = csv.writer(f)
         wr.writerow(header)        
         wr.writerows(dati) 

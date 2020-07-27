@@ -16,10 +16,11 @@ dir_path = os.path.dirname(os.path.realpath(__file__))
 
 def query(param, anno, mese):    
     #trovo tutti i link alle pagine che contengono i bolletti idrologici dei vari anni 
+   
     for e in soup_homepage.findAll('a'):
         link = e.get('href')
         if (param in link and anno in link):
-            target_anno_link = link
+            target_anno_link = link            
 
     target_link = url_base + target_anno_link    
 
@@ -36,8 +37,8 @@ def query(param, anno, mese):
     target_mese_link = url_base + target_mese_link   
 
     tables = camelot.read_pdf(target_mese_link,pages='1', multiple_tables = False, flavor='stream', strip_text='\n')
-    filename = dir_path + "\\result\\" + param + anno +mese + ".csv"
-    tables[0].to_csv(filename)
+    filename = dir_path + "\\result\\" + param + '_' + mese + '_' + anno + ".xlsx"
+    tables.export(filename, f = 'excel', compress = False)
 
 def mese_from_link(link_str):
     #funzione che decuce l'anno e il mese dal link
@@ -73,22 +74,16 @@ def query_pa(param, anno):
     target_links = []
     for e in soup2.findAll('a'):
         link = e.get('href')
-        if ("Bollettini" in link):
+        if ("Bollettini" in link and "Riepilogo" not in link): 
             #Documenti/Bollettini/Bollettini Idrologici/Anno 2004/01 - Gennaio.pdf
             link = link.replace(' ','%20')
             target_links.append(url_base+ link)
-    
-    target_links.pop() #tolgo l'ultimo link (riepilogo semestre)
-    target_links.pop() #tolgo l'ultimo link (riepilogo annuale)
-
+   
     for l in target_links:
-        mese = mese_from_link(l)   
+        mese = mese_from_link(l)           
         tables = camelot.read_pdf(l,pages='1', multiple_tables = False, flavor='stream', strip_text='\n')
-        filename = dir_path + "\\result\\" + param + anno +mese + ".csv"
-        tables[0].to_csv(filename)
-        
-    
-    
+        filename = dir_path + "\\result\\" + param + "_" + mese + "_" + anno + ".xlsx"
+        tables.export(filename, 'excel', compress = False)   
     
 def query_p(param):
     if (param == 'idro'):
@@ -108,25 +103,24 @@ def query_p(param):
         soup2 = BeautifulSoup(html_page, 'html.parser')
         target_links = []
         for e in soup2.findAll('a'):
-            link = e.get('href')
+            link = e.get('href')            
             if ("Bollettini" in link and 'pdf' in link):
-                #Documenti/Bollettini/Bollettini Idrologici/Anno 2004/01 - Gennaio.pdf
-                link = link.replace(' ','%20')
-                target_links.append(url_base+ link)
+                if ("Riepilogo" not in link):                
+                    link = link.replace(' ','%20')
+                    target_links.append(url_base+ link)
         if (len(target_links) == 0):
             break #if no result
-
-        target_links.pop() #tolgo l'ultimo link (riepilogo semestre)
-        target_links.pop() #tolgo l'ultimo link (riepilogo annuale)
-
+        
+    
+    
         for l in target_links:            
             mese = mese_from_link(l) 
             anno = anno_from_link(l)       
             
             tables = camelot.read_pdf(l,pages='1', multiple_tables = False, flavor='stream', strip_text='\n')
-            filename = dir_path + "\\result" + param + mese+anno + ".csv"
-            tables[0].to_csv(filename)
-            
+            filename = dir_path + "\\result\\" + param + "_" + mese + "_" + anno + ".xlsx"
+            tables.export(filename, f = 'excel', compress = False)
+           
 
 def verifica_dispon(p,a):
     a = int(a)
@@ -144,6 +138,7 @@ def verifica_dispon(p,a):
 if __name__ == "__main__":  
     if (len(sys.argv) == 1):
         print('specifica parametro anno mese')
+        query_p('idro')
         exit()
 
     elif (len(sys.argv) == 4):

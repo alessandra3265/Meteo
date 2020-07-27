@@ -17,6 +17,7 @@ esecuzione per dati mensili: py friuliAll.py anno mese               (es: py fri
 esecuzione per dati orari:   py friuliAll.py anno mese giorno        (es: py friliAll.py 2020 6 20)
 
 scrive i risultati in un file csv nella directory corrente 
+multi anno non implemetato
 """
 
 def query (type, year, month, day,city):
@@ -110,7 +111,8 @@ def query (type, year, month, day,city):
    
         
 if __name__ == "__main__": 
-    htmlList = []   
+    htmlList = [] 
+    path_src = os.path.dirname(os.path.realpath(__file__)) #path del file sorgente  
     p = Path(os.path.realpath(__file__))
     parent = p.parent.parent.parent
     driver_path = os.path.join(parent,"geckodriver")
@@ -119,9 +121,8 @@ if __name__ == "__main__":
     optionsFire.add_argument('--headless')
     if (len(sys.argv) == 3):
         anno = sys.argv[1]
-        mese = sys.argv[2]   
-        print (anno)
-        print (mese)     
+        mese = sys.argv[2]           
+        filename = "fvg_" + anno + "_" + mese + ".csv"       
         for city in range(2,54):
             html = query('giorno', anno, mese, '',city)
             htmlList.append(html)
@@ -130,7 +131,7 @@ if __name__ == "__main__":
         anno = sys.argv[1]
         mese = sys.argv[2]  
         giorno = sys.argv[3]
-
+        filename = "fvg_" + anno + "_" + mese + "_" + giorno + ".csv"
         for city in range(2,7):
             html = query('giorno', anno, mese, giorno,city)
             htmlList.append(html)
@@ -138,8 +139,9 @@ if __name__ == "__main__":
         print('giorno 2020 6 1 ariis')
         html = query('giorno', 2020, 6,1,2)
         htmlList.append(html)
-    
-    final_parsing(htmlList,2020)
+    filename = os.path.join(path_src, filename)
+    print(filename)
+    final_parsing(htmlList,anno,filename)
         
 
 

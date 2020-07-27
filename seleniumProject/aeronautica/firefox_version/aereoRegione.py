@@ -171,7 +171,7 @@ if __name__ == "__main__":
         
 
     if (len(html_list) != 0):
-        filename = regione_name + '.csv'
+        filename = regione_name + ai + af + '.csv'
         finalParsing(html_list, filename)
         print('ci sono risultati')
     

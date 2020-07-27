@@ -171,7 +171,7 @@ if __name__ == "__main__":
             getProvinciaResult(param, prov, anno)
     else: 
         print('specifica parametro provincia anno')
-        #getProvinciaResult('TEMP', 'Padova', '2018')
+        getProvinciaResult('TEMP', 'Padova', '2018')
 
 
        

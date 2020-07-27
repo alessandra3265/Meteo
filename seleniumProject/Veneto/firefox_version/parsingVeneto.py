@@ -10,7 +10,7 @@ script che accetta html relativo a un anno e a una stazione
 
 def parse(html, anno, parametro, provincia, rows): 
     html = html.replace('<th>&#160;</th>', '<td> </td>')
-
+    
     soup = BeautifulSoup(html, "html.parser") 
 
     #trovo pannello con 3 tabelle
@@ -29,6 +29,11 @@ def parse(html, anno, parametro, provincia, rows):
     for lista in dati:
         if (len(lista) < 12):
             dati.remove(lista)
+
+    for lines in dati:
+        for a in range(0, len(lines)):
+            if (lines[a] == '>>'):
+                lines[a] = '0'
 
     #estraggo l'intestazione head
     headers = [tr for tr in table.select("tr")]
@@ -53,7 +58,7 @@ def parse(html, anno, parametro, provincia, rows):
     return
     
 def final_parsing(html_list, anno,parametro,provincia, filename):
-    headers = ['Giorno','GEN','FEB','MAR','APR','MAG','GIU','LUG','AGO','SET','NOV','DIC','anno','parametro','provincia','stazione']
+    headers = ['Giorno','GEN','FEB','MAR','APR','MAG','GIU','LUG','AGO','SET','NOV','OTT','DIC','anno','parametro','provincia','stazione']
     rows = []
    
     for html in html_list:         
