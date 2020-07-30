@@ -15,7 +15,7 @@ specifying Parameter Region and a time interval
 ## how to run:
 - run `aereoRegione.py p` to get the list of parameters
 - run `aereoRegione.py parameter region start_day start_month start_year end_day end_month end_year`</br>
-- run `aereoRegione.py parameter tutte start_day start_month start_year end_day end_month end_year` to get data from *all region*
+- run `aereoRegione.py parameter tutte start_day start_month start_year end_day end_month end_year` to get data from *all* regions.
 
 
 ## for example: </br>
