@@ -8,6 +8,12 @@ import os
 param è idro oppure termo
 anni da 2004 al 2017 per idro
 anni da 2006 a 2016 per termo
+lazio_web.py    idro    tutti i dati della pioggia
+lazio_web.py    idro    2016    tutti i dati della pioggia 2016
+lazio_web.py    idro    2006    01  dati di gennaio
+lazio_web.py    idro    2006 2015    tutti i dati dal 2006 a 2015
+
+risultati salvati in un file excel
 """
 url_base = "http://www.idrografico.regione.lazio.it/"
 html_homepage = request.urlopen('http://www.idrografico.regione.lazio.it/std_page.aspx-Page=bollettini.htm')
@@ -35,9 +41,12 @@ def query(param, anno, mese):
             link = link.replace(' ','%20')
             target_mese_link = link
     target_mese_link = url_base + target_mese_link   
-
+    print(target_mese_link)
+    print(param)
+    print(anno)
+    print(mese)
     tables = camelot.read_pdf(target_mese_link,pages='1', multiple_tables = False, flavor='stream', strip_text='\n')
-    filename = dir_path + "\\result\\" + param + '_' + mese + '_' + anno + ".xlsx"
+    filename = dir_path + "\\result\\" + param + '_' + mese + '_' + anno + ".xlsx"    
     tables.export(filename, f = 'excel', compress = False)
 
 def mese_from_link(link_str):
@@ -141,13 +150,15 @@ if __name__ == "__main__":
         query_p('idro')
         exit()
 
-    elif (len(sys.argv) == 4):
+    elif (len(sys.argv) == 5):
         param = sys.argv[1]
         anno = sys.argv[2]
         mese = sys.argv[3]
-        print(param)
-        if(verifica_dispon(param,anno)):
-            query(param, anno, mese)
+        key_world = sys.argv[4]
+        if (key_world == 'm'):
+            print(param)
+            if(verifica_dispon(param,anno)):
+                query(param, anno, mese)
 
     elif (len(sys.argv) == 3):
         param = sys.argv[1]
@@ -157,3 +168,12 @@ if __name__ == "__main__":
     elif (len(sys.argv) == 2):
         param = sys.argv[1]                
         query_p(param)
+
+    elif (len(sys.argv) == 4):
+        param = sys.argv[1]
+        anno_inizio = sys.argv[2]
+        anno_fine = sys.argv[3]
+        
+        for year in range(int(anno_inizio) , int(anno_fine) + 1):
+            if(verifica_dispon(param,str(year))):
+                query_pa(param,str(year))

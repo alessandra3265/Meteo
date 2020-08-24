@@ -38,7 +38,7 @@ optionsFire.add_argument('--headless')
 """
 nel html a ogni stazione è associato un numero 
 resituisce un dizionario che associa il nome della pronvicia con
-la lista di numero della stazione appartententi alle stazioni  
+la lista di numeri delle stazioni appartententi alle stazioni  
 """
 def getDictProvince(parametro, provincia, anno):     
     url = "https://www.arpa.veneto.it/bollettini/storico/Mappa_" + anno + "_" +parametro + ".htm?t=RG"
@@ -171,7 +171,7 @@ if __name__ == "__main__":
             getProvinciaResult(param, prov, anno)
     else: 
         print('specifica parametro provincia anno')
-        getProvinciaResult('TEMP', 'Padova', '2018')
+       # getProvinciaResult('TEMP', 'Padova', '2018')
 
 
        

@@ -49,12 +49,13 @@ def htmlParse(html, rows):
     
 def finalParsing(htlm_list,filename):
     #costruisco intestazione
-    row = ['Parametro', 'Gen', 'Feb', 'Mar', 'Apr', 'Mag', 'Giu', 'Lug', 'Ago', 'Set', 'Nov', 'Dic', 'anno', 'Stazione']
+    row = ['Parametro', 'Gen', 'Feb', 'Mar', 'Apr', 'Mag', 'Giu', 'Lug', 'Ago', 'Set', 'Ott', 'Nov', 'Dic', 'anno', 'Stazione']
 
     rows = []
 
     for e in htlm_list :
         htmlParse(e, rows)
+    
     
     #scrittura su file csv 
     with open(filename, "w") as f:

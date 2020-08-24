@@ -35,7 +35,7 @@ nel html a ogni stazione è associato un numero
 costruisce un dizionario che associa il nome di
 ogni stazione con il numero 
 """
-def getDictonaryStation(parametro,city, anno): 
+def getDictonaryStation(parametro,city, anno):     
     url = "https://www.arpa.veneto.it/bollettini/storico/Mappa_" + anno + "_" + parametro + ".htm?t=RG"
     #print(url)
     wdriver = webdriver.Firefox(executable_path=driver_path, options=optionsFire)
@@ -106,14 +106,14 @@ def getParametri():
 restituisce le stazioni disponibili in un dato per un dato parametro  
 """
 def getStazioni(parametro, anno):
-    stazioni = getDictonaryStation(anno, parametro,'')
+    stazioni = getDictonaryStation(parametro,'',anno)
     print(stazioni.keys())
 
 
 if __name__ == "__main__":     
     if(len(sys.argv) == 4 and sys.argv[1] == 's'):         
-        #param anno s
-        getStazioni(sys.argv[2],sys.argv[3])
+        #s param anno         
+        getStazioni(sys.argv[2],sys.argv[3])        
         exit()
     elif(len(sys.argv) == 4):
             #param citta anno
