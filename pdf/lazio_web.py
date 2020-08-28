@@ -44,8 +44,8 @@ def query(param, anno, mese):
     print(target_mese_link)
     print(param)
     print(anno)
-    print(mese)
-    tables = camelot.read_pdf(target_mese_link,pages='1', multiple_tables = False, flavor='stream', strip_text='\n')
+    print(mese) 
+    tables = camelot.read_pdf(target_mese_link, pages='1',  multiple_tables = False,flavor = 'stream',strip_text = '\n', layout_kwargs={'word_margin': 0.2})
     filename = dir_path + "\\result\\" + param + '_' + mese + '_' + anno + ".xlsx"    
     tables.export(filename, f = 'excel', compress = False)
 
@@ -90,7 +90,7 @@ def query_pa(param, anno):
    
     for l in target_links:
         mese = mese_from_link(l)           
-        tables = camelot.read_pdf(l,pages='1', multiple_tables = False, flavor='stream', strip_text='\n')
+        tables = camelot.read_pdf(l, pages='1',  multiple_tables = False,flavor = 'stream',strip_text = '\n', layout_kwargs={'word_margin': 0.2})
         filename = dir_path + "\\result\\" + param + "_" + mese + "_" + anno + ".xlsx"
         tables.export(filename, 'excel', compress = False)   
     
@@ -125,8 +125,8 @@ def query_p(param):
         for l in target_links:            
             mese = mese_from_link(l) 
             anno = anno_from_link(l)       
+            tables = camelot.read_pdf(l, pages='1',  multiple_tables = False,flavor = 'stream',strip_text = '\n', layout_kwargs={'word_margin': 0.2})
             
-            tables = camelot.read_pdf(l,pages='1', multiple_tables = False, flavor='stream', strip_text='\n')
             filename = dir_path + "\\result\\" + param + "_" + mese + "_" + anno + ".xlsx"
             tables.export(filename, f = 'excel', compress = False)
            
