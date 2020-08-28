@@ -1,3 +1,33 @@
+# venetoTutte.py 
+Scripts for the website: https://www.arpa.veneto.it/bollettini/storico/Mappa_2020_TEMP.htm.
+
+## dependencies:
+- requests_html
+- BeautifulSoup
+- urllib
+
+this script allows you to get data of all stations of Veneto
+specifying Parameter Years of interest.
+
+
+## how to run: 
+- run `venetoTutte.py parametro anno` to get results </br> 
+
+### multiple years can be specified:
+
+- run `venetoProvince.py parametro anno_inizio anno_fine` to get data from year to year
+
+## for example: </br>
+
+- to obtain 2020 rainfall data from all stations </br>
+`venetoTutte.py PREC 2020`
+
+- to obtain t2018 temperature data from all stations  </br>
+`venetoTutte.py TEMP 2018`
+
+- to obtain all pressure data from 2015 to 2020 </br>
+`venetoTutte.py PRESS 2015 2020`
+
 # venetoProvince.py and venetoStazione.py
 Scripts for the website: https://www.arpa.veneto.it/bollettini/storico/Mappa_2020_TEMP.htm.
 
