@@ -37,9 +37,9 @@ selenium documentation: https://selenium-python.readthedocs.io/
 
 more information: https://pypi.org/project/beautifulsoup4/
 
-### Install urllib:
-1. Start a command prompt
-2. Run `pip install urllib`
+### urllib:
+1. urllib is a standard library,  you do not have to install it.
+
 
 ### Install robobrowser:
 1. Start a command prompt
