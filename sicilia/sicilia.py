@@ -23,7 +23,6 @@ def query (avgtype, timespan, day, month, year, dayend, monthend, yearend) :
 
     br.open(url)
     form = br.get_form() #prende il form dalla pagina web
-
     form['avgtype'] = avgtype #medie 
     form['timespan'] = timespan #intervallo di tempo
     form['day'] = day    
@@ -32,17 +31,11 @@ def query (avgtype, timespan, day, month, year, dayend, monthend, yearend) :
     form['dayend'] = dayend
     form['monthend'] = monthend #mese fine
     form['yearend'] = yearend
-
     br.submit_form(form) #esegue metodo post 
 
-    soup = br.parsed    
-    
+    soup = br.parsed       
     table = soup.select_one("table")
-
-    headers = [th for th in table.select("tr")]
-    #print(headers[0].text)
-    #print(headers[1].text)
-    
+    headers = [th for th in table.select("tr")]    
     #Anno Mese Temperatura...
     row1 = [th.text for th in headers[0].select("th")]
      
@@ -79,7 +72,7 @@ def query (avgtype, timespan, day, month, year, dayend, monthend, yearend) :
 
 
     #scrittura su file
-    filename = "sicilia.csv" 
+    filename = "sicilia" + avgtype + timespan + day + month + year + dayend + monthend + yearend + ".csv" 
     with open(filename, "w") as f:
         wr = csv.writer(f)
         wr.writerow(row1)        
