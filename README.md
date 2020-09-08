@@ -7,7 +7,8 @@
 
 ### Install Selenium: 
 1. Start a command prompt
-2. Run `pip install selenium`
+2. change directory to python directory
+3. Run `pip install selenium`
 
 Selenium requires a ***driver*** to interface with the chosen browser. 
 
@@ -22,7 +23,8 @@ selenium documentation: https://selenium-python.readthedocs.io/
 
 ### Install Beautiful Soup:
 1. Start a command prompt
-2. Run `pip install beautifulsoup4`
+2. change directory to python directory
+3. Run `pip install beautifulsoup4`
 
 more information: https://pypi.org/project/beautifulsoup4/
 
